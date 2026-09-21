@@ -23,10 +23,103 @@
         <span class="status"></span>
       </div>
 
-      <h1>Chinmoy</h1>
-      <p class="tagline">MCA Student • AI/ML Learner • Developer</p>
-      <p class="intro">Learning, building and turning ideas into real projects. 🚀</p>
+     <div class="container">
 
+        <h1>
+            Hi, I'm <span class="name" id="name"></span>
+            <span class="cursor"></span>
+        </h1>
+
+        <div class="work" id="work"></div>
+
+    </div>
+
+
+    <script>
+
+        const nameText = "Chinmoy Deka";
+
+        const works = [
+            "MCA Student",
+            "AI/ML Learner",
+            "Developer",
+            
+        ];
+
+        let nameIndex = 0;
+        let workIndex = 0;
+        let charIndex = 0;
+
+
+        // Name typing
+        function typeName() {
+
+            if (nameIndex < nameText.length) {
+
+                document.getElementById("name").textContent +=
+                    nameText.charAt(nameIndex);
+
+                nameIndex++;
+
+                setTimeout(typeName, 150);
+
+            } else {
+
+                setTimeout(typeWork, 500);
+            }
+        }
+
+
+        // Work typing
+        function typeWork() {
+
+            if (charIndex < works[workIndex].length) {
+
+                document.getElementById("work").textContent +=
+                    works[workIndex].charAt(charIndex);
+
+                charIndex++;
+
+                setTimeout(typeWork, 100);
+
+            } else {
+
+                setTimeout(deleteWork, 1500);
+            }
+        }
+
+
+        // Delete work
+        function deleteWork() {
+
+            if (charIndex > 0) {
+
+                document.getElementById("work").textContent =
+                    works[workIndex].substring(0, charIndex - 1);
+
+                charIndex--;
+
+                setTimeout(deleteWork, 50);
+
+            } else {
+
+                workIndex++;
+
+                if (workIndex >= works.length) {
+                    workIndex = 0;
+                }
+
+                setTimeout(typeWork, 500);
+            }
+        }
+
+
+        // Start animation
+        typeName();
+
+    </script>
+
+      
       <div class="links">
         <!-- Replace the # links below with your real profiles -->
        
